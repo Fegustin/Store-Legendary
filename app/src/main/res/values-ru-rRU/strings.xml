@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Store Legendary</string>
+    <string name="title_home">Главная</string>
+    <string name="title_catalog">Каталог</string>
+    <string name="title_basket">Корзина</string>
+    <string name="title_profile">Профиль</string>
+    <string name="phone">Номер телефона</string>
+    <string name="password">Пароль</string>
+    <string name="sign_in">Авторизация</string>
+    <string name="no_profile">Нет профиля?</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="Error">Ошибка</string>
+    <string name="code_sms">Введите полученный код из SMS</string>
+    <string name="your_first_and_last_name">Ваши имя и фамилия</string>
+    <string name="confirm_password">Повторите пароль</string>
+</resources>

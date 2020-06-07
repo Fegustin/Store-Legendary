@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Store Legendary</string>
+
+    <!--  BottomNavigation  -->
+    <string name="title_home">Main</string>
+    <string name="title_catalog">Catalog</string>
+    <string name="title_basket">Basket</string>
+    <string name="title_profile">Profile</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="no_profile">No profile?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="Error">Error</string>
+    <string name="code_sms">Enter the received code from SMS</string>
+    <string name="your_first_and_last_name">Your first and last name</string>
+    <string name="confirm_password">Confirm password</string>
+</resources>

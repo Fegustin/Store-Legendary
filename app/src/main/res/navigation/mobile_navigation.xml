@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.shitshop.storeshits.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_catalog"
+        android:name="com.shitshop.storeshits.ui.catalog.CatalogFragment"
+        android:label="@string/title_catalog"
+        tools:layout="@layout/fragment_catalog" />
+
+    <fragment
+        android:id="@+id/navigation_basket"
+        android:name="com.shitshop.storeshits.ui.basket.BasketFragment"
+        android:label="@string/title_basket"
+        tools:layout="@layout/fragment_basket" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.shitshop.storeshits.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation"
+            app:destination="@id/navigation" />
+    </fragment>
+
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/register_Fragment">
+        <fragment
+            android:id="@+id/register_Fragment"
+            android:name="com.shitshop.storeshits.ui.profile.register.RegisterFragment"
+            android:label="Register"
+            tools:layout="@layout/fragment_register" >
+            <action
+                android:id="@+id/action_registerFragment_to_verificationCodeFragment"
+                app:destination="@id/verification_code_fragment" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_navigation_profile"
+            app:destination="@id/navigation_profile" />
+        <fragment
+            android:id="@+id/verification_code_fragment"
+            android:name="com.shitshop.storeshits.ui.profile.register.VerificationCodeFragment"
+            android:label="fragment_verification_code"
+            tools:layout="@layout/fragment_verification_code" />
+    </navigation>
+
+</navigation>
