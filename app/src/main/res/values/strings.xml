@@ -6,6 +6,8 @@
     <string name="title_catalog">Catalog</string>
     <string name="title_basket">Basket</string>
     <string name="title_profile">Profile</string>
+
+    <!--  Auth  -->
     <string name="phone">Phone</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
@@ -15,4 +17,15 @@
     <string name="code_sms">Enter the received code from SMS</string>
     <string name="your_first_and_last_name">Your first and last name</string>
     <string name="confirm_password">Confirm password</string>
+    <string name="registration">Registration</string>
+    <string name="the_code">The code you entered will</string>
+    <string name="the_code_2">receive a registration code</string>
+    <string name="submit_code">Submit Code</string>
+    <string name="is_empty">The field must not be empty</string>
+    <string name="little_password">Password must be at least 6 characters</string>
+    <string name="dont_repeat_password">Your passwords do not match</string>
+    <string name="verification_send_code">The verification code entered was invalid</string>
+    <string name="number_correct">Number entered incorrectly</string>
+    <string name="quota">The SMS quota has been exceeded</string>
+    <string name="submit">Submit</string>
 </resources>

@@ -49,9 +49,16 @@
             app:destination="@id/navigation_profile" />
         <fragment
             android:id="@+id/verification_code_fragment"
-            android:name="com.shitshop.storeshits.ui.profile.register.VerificationCodeFragment"
+            android:name="com.shitshop.storeshits.ui.profile.register.verification.VerificationCodeFragment"
             android:label="fragment_verification_code"
-            tools:layout="@layout/fragment_verification_code" />
+            tools:layout="@layout/fragment_verification_code" >
+            <argument
+                android:name="number"
+                app:argType="string" />
+            <action
+                android:id="@+id/action_verification_code_fragment_to_register_Fragment"
+                app:destination="@id/register_Fragment" />
+        </fragment>
     </navigation>
 
 </navigation>

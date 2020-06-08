@@ -7,11 +7,22 @@
     <string name="title_profile">Профиль</string>
     <string name="phone">Номер телефона</string>
     <string name="password">Пароль</string>
-    <string name="sign_in">Авторизация</string>
+    <string name="sign_in">Войти</string>
     <string name="no_profile">Нет профиля?</string>
     <string name="sign_up">Зарегистрироваться</string>
     <string name="Error">Ошибка</string>
     <string name="code_sms">Введите полученный код из SMS</string>
-    <string name="your_first_and_last_name">Ваши имя и фамилия</string>
+    <string name="your_first_and_last_name">Ваши имя и фамилию</string>
     <string name="confirm_password">Повторите пароль</string>
+    <string name="registration">Регистрация</string>
+    <string name="the_code">На введенный вами номер</string>
+    <string name="the_code_2">придет код для регистрации</string>
+    <string name="submit_code">Отправить код</string>
+    <string name="is_empty">Поле не должно быть пустым</string>
+    <string name="little_password">Пароль должен состоять из не менее 6 символов</string>
+    <string name="dont_repeat_password">Ваши пароли не совпадают</string>
+    <string name="verification_send_code">Код подтверждения введен неверно</string>
+    <string name="number_correct">Номер введен некорректно</string>
+    <string name="quota">Квота SMS была превышена</string>
+    <string name="submit">Отправить</string>
 </resources>

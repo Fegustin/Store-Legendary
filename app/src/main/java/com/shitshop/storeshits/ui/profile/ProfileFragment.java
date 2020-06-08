@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +24,7 @@ public class ProfileFragment extends Fragment {
 
     //View
     private TextView textViewRegister;
+    private ImageView imageViewProfile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,19 +32,18 @@ public class ProfileFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if (currentUser == null) {
+        // View
+        textViewRegister = root.findViewById(R.id.textViewRegister);
+        imageViewProfile = root.findViewById(R.id.imageViewProfile);
 
-        } else {
+
+        if (currentUser != null) {
 
         }
 
-        // View
-        textViewRegister = root.findViewById(R.id.textViewRegister);
-
-
         // Event
 
-        //Go to registration page
+        // Go to registration page
         textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

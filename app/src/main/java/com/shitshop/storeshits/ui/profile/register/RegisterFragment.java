@@ -2,7 +2,6 @@ package com.shitshop.storeshits.ui.profile.register;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -10,15 +9,10 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.Button;
 
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.android.material.textfield.TextInputLayout;
 import com.shitshop.storeshits.R;
-
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 public class RegisterFragment extends Fragment {
 
@@ -26,6 +20,8 @@ public class RegisterFragment extends Fragment {
 
     // View
     private Toolbar toolbarBackToProfile;
+    private TextInputLayout textInputLayoutNumber;
+    private Button buttonSendCode;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +29,8 @@ public class RegisterFragment extends Fragment {
 
         // View
         toolbarBackToProfile = root.findViewById(R.id.toolbar_back_profile);
+        textInputLayoutNumber = root.findViewById(R.id.textInputLayoutNubmer);
+        buttonSendCode = root.findViewById(R.id.buttonSendCode);
 
 
         // Event
@@ -45,36 +43,34 @@ public class RegisterFragment extends Fragment {
             }
         });
 
+        // Send code to verification fragment
+        buttonSendCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!validateNumber()) {
+                    return;
+                }
+
+                String number = textInputLayoutNumber.getEditText().getText().toString().trim();
+
+                RegisterFragmentDirections.ActionRegisterFragmentToVerificationCodeFragment
+                        action = RegisterFragmentDirections.actionRegisterFragmentToVerificationCodeFragment(number);
+                Navigation.findNavController(v).navigate(action);
+            }
+        });
+
         return root;
     }
 
-    private void sendVerificationCode(String number) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                number,
-                60,
-                TimeUnit.SECONDS,
-                requireActivity(),
-                mCallBack
-                );
+    private boolean validateNumber() {
+        String number = textInputLayoutNumber.getEditText().getText().toString().trim();
+
+        if (number.isEmpty()) {
+            textInputLayoutNumber.setError(getString(R.string.is_empty));
+            return false;
+        } else {
+            textInputLayoutNumber.setError(null);
+            return true;
+        }
     }
-
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks
-            mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-        @Override
-        public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-            String code = phoneAuthCredential.getSmsCode();
-        }
-
-        @Override
-        public void onVerificationFailed(@NonNull FirebaseException e) {
-            Toast.makeText(getActivity(), getString(R.string.Error) + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-
-        @Override
-        public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-            super.onCodeSent(s, forceResendingToken);
-
-            verificationId = s;
-        }
-    };
 }
