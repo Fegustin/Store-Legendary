@@ -7,8 +7,8 @@
     <string name="title_profile">Профиль</string>
     <string name="phone">Номер телефона</string>
     <string name="password">Пароль</string>
-    <string name="sign_in">Войти</string>
-    <string name="no_profile">Нет профиля?</string>
+    <string name="sign_in">Вход</string>
+    <string name="no_profile">Введите номер телефона</string>
     <string name="sign_up">Зарегистрироваться</string>
     <string name="Error">Ошибка</string>
     <string name="code_sms">Введите полученный код из SMS</string>
@@ -25,4 +25,15 @@
     <string name="number_correct">Номер введен некорректно</string>
     <string name="quota">Квота SMS была превышена</string>
     <string name="submit">Отправить</string>
+    <string name="enter_email">Введите Email</string>
+    <string name="incorrect_email">Введен некорректный Email</string>
+    <string name="fname_lname">Имя Фамилия</string>
+    <string name="code_short">Ваш код слишком короткий</string>
+    <string name="personal_data">Личные данные</string>
+    <string name="favorites">Избранное</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="log_out">Выйти из аккаунта</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="changed_personal_name">Имя и фамилия изменены</string>
 </resources>

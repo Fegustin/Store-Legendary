@@ -29,36 +29,42 @@
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_navigation_profile_to_navigation"
-            app:destination="@id/navigation" />
-    </fragment>
-
-    <navigation android:id="@+id/navigation"
-        app:startDestination="@id/register_Fragment">
-        <fragment
-            android:id="@+id/register_Fragment"
-            android:name="com.shitshop.storeshits.ui.profile.register.RegisterFragment"
-            android:label="Register"
-            tools:layout="@layout/fragment_register" >
-            <action
-                android:id="@+id/action_registerFragment_to_verificationCodeFragment"
-                app:destination="@id/verification_code_fragment" />
-        </fragment>
+            android:id="@+id/action_navigation_profile_to_verificationCodeFragment"
+            app:destination="@id/verification_code_fragment" />
         <action
-            android:id="@+id/action_global_navigation_profile"
-            app:destination="@id/navigation_profile" />
-        <fragment
-            android:id="@+id/verification_code_fragment"
-            android:name="com.shitshop.storeshits.ui.profile.register.verification.VerificationCodeFragment"
-            android:label="fragment_verification_code"
-            tools:layout="@layout/fragment_verification_code" >
-            <argument
-                android:name="number"
-                app:argType="string" />
-            <action
-                android:id="@+id/action_verification_code_fragment_to_register_Fragment"
-                app:destination="@id/register_Fragment" />
-        </fragment>
-    </navigation>
+            android:id="@+id/action_navigation_profile_to_personalDateFragment"
+            app:destination="@id/personal_data_fragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_feedbackFragment2"
+            app:destination="@id/feedback_fragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_favoritesFragment2"
+            app:destination="@id/favorites_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verification_code_fragment"
+        android:name="com.shitshop.storeshits.ui.profile.register.verification.VerificationCodeFragment"
+        android:label="fragment_verification_code"
+        tools:layout="@layout/fragment_verification_code" >
+        <argument
+            android:name="number"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/personal_data_fragment"
+        android:name="com.shitshop.storeshits.ui.profile.list_profile.personal_data.PersonalDataFragment"
+        android:label="fragment_personal_date"
+        tools:layout="@layout/fragment_personal_data" />
+    <fragment
+        android:id="@+id/feedback_fragment"
+        android:name="com.shitshop.storeshits.ui.profile.list_profile.feedback.FeedbackFragment"
+        android:label="fragment_feedback"
+        tools:layout="@layout/fragment_feedback" />
+    <fragment
+        android:id="@+id/favorites_fragment"
+        android:name="com.shitshop.storeshits.ui.profile.list_profile.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <action android:id="@+id/action_global_navigation_profile" app:destination="@id/navigation_profile" />
 
 </navigation>

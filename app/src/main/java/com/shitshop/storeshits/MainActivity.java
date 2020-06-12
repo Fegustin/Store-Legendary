@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                if (destination.getId() == R.id.register_Fragment) {
+                if (destination.getId() == R.id.verification_code_fragment) {
                     navView.setVisibility(View.GONE);
                 } else {
                     navView.setVisibility(View.VISIBLE);

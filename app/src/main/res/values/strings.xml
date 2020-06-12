@@ -11,7 +11,7 @@
     <string name="phone">Phone</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
-    <string name="no_profile">No profile?</string>
+    <string name="no_profile">Enter phone number</string>
     <string name="sign_up">Sign up</string>
     <string name="Error">Error</string>
     <string name="code_sms">Enter the received code from SMS</string>
@@ -28,4 +28,15 @@
     <string name="number_correct">Number entered incorrectly</string>
     <string name="quota">The SMS quota has been exceeded</string>
     <string name="submit">Submit</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="incorrect_email">Incorrect Email entered</string>
+    <string name="fname_lname">First Name Last Name</string>
+    <string name="code_short">Your code is too short</string>
+    <string name="personal_data">Personal data</string>
+    <string name="favorites">Favorites</string>
+    <string name="feedback">Feedback</string>
+    <string name="log_out">log out</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="changed_personal_name">Name and surname changed</string>
 </resources>

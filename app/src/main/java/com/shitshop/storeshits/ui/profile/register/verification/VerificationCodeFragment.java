@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,9 +34,6 @@ public class VerificationCodeFragment extends Fragment implements VerificationCo
 
     // View
     private TextInputLayout textInputLayoutCodeSMS;
-    private TextInputLayout textInputLayoutLFName;
-    private TextInputLayout textInputLayoutVPassword;
-    private TextInputLayout textInputLayoutVPasswordR;
     private Button buttonVerificationDate;
     private ProgressBar progressBarCode;
     private Toolbar toolbarBackToPhone;
@@ -51,13 +49,9 @@ public class VerificationCodeFragment extends Fragment implements VerificationCo
 
         // View
         textInputLayoutCodeSMS = root.findViewById(R.id.textInputLayoutCodeSMS);
-        textInputLayoutLFName = root.findViewById(R.id.textInputLayoutLFName);
-        textInputLayoutVPassword = root.findViewById(R.id.textInputLayoutVPassword);
-        textInputLayoutVPasswordR = root.findViewById(R.id.textInputLayoutVPasswordR);
         buttonVerificationDate = root.findViewById(R.id.buttonVerificationDate);
         progressBarCode = root.findViewById(R.id.progressBarCode);
         toolbarBackToPhone = root.findViewById(R.id.toolbar_back_phone);
-
 
         // Event
 
@@ -70,7 +64,7 @@ public class VerificationCodeFragment extends Fragment implements VerificationCo
             @Override
             public void onClick(final View v) {
 
-                if (!verificationCodeSMS() | !verificationFLName() | !verificationPassword() | !verificationVPasswordR()) {
+                if (!verificationCodeSMS()) {
                     return;
                 }
 
@@ -83,7 +77,7 @@ public class VerificationCodeFragment extends Fragment implements VerificationCo
                                     FirebaseUser user = task.getResult().getUser();
 
                                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName(textInputLayoutLFName.getEditText().getText().toString().trim())
+                                            .setDisplayName(getString(R.string.fname_lname))
                                             .build();
 
                                     user.updateProfile(profileUpdates)
@@ -91,14 +85,6 @@ public class VerificationCodeFragment extends Fragment implements VerificationCo
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     Log.i("UserName", "Complete");
-                                                }
-                                            });
-
-                                    user.updatePassword(textInputLayoutVPassword.getEditText().getText().toString().trim())
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    Log.i("UserPassword", "Complete");
                                                 }
                                             });
 
@@ -113,11 +99,11 @@ public class VerificationCodeFragment extends Fragment implements VerificationCo
             }
         });
 
-        // Go to phone page
+        // Go to profile page
         toolbarBackToPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_verification_code_fragment_to_register_Fragment);
+                Navigation.findNavController(v).navigate(R.id.action_global_navigation_profile);
             }
         });
 
@@ -130,54 +116,11 @@ public class VerificationCodeFragment extends Fragment implements VerificationCo
         if (code.isEmpty()) {
             textInputLayoutCodeSMS.setError(getString(R.string.is_empty));
             return false;
+        } else if (code.length() < 6) {
+            textInputLayoutCodeSMS.setError(getString(R.string.code_short));
+            return false;
         } else {
             textInputLayoutCodeSMS.setError(null);
-            return true;
-        }
-    }
-
-    private boolean verificationFLName() {
-        String name = textInputLayoutLFName.getEditText().getText().toString().trim();
-
-        if (name.isEmpty()) {
-            textInputLayoutLFName.setError(getString(R.string.is_empty));
-            return false;
-        } else {
-            textInputLayoutLFName.setError(null);
-            return true;
-        }
-    }
-
-    private boolean verificationPassword() {
-        String password = textInputLayoutVPassword.getEditText().getText().toString().trim();
-
-        if (password.isEmpty()) {
-            textInputLayoutVPassword.setError(getString(R.string.is_empty));
-            return false;
-        } else if (password.length() < 6) {
-            textInputLayoutVPassword.setError(getString(R.string.little_password));
-            return false;
-        } else {
-            textInputLayoutVPassword.setError(null);
-            return true;
-        }
-    }
-
-    private boolean verificationVPasswordR() {
-        String password = textInputLayoutVPassword.getEditText().getText().toString().trim();
-        String passwordR = textInputLayoutVPasswordR.getEditText().getText().toString().trim();
-
-        Log.i("password", password);
-        Log.i("password", passwordR);
-
-        if (passwordR.isEmpty()) {
-            textInputLayoutVPasswordR.setError(getString(R.string.is_empty));
-            return false;
-        } else if (!passwordR.equals(password)) {
-            textInputLayoutVPasswordR.setError(getString(R.string.dont_repeat_password));
-            return false;
-        } else {
-            textInputLayoutVPasswordR.setError(null);
             return true;
         }
     }
@@ -204,6 +147,6 @@ public class VerificationCodeFragment extends Fragment implements VerificationCo
 
     @Override
     public void failedVerificationCode() {
-        Navigation.findNavController(getView()).navigate(R.id.action_verification_code_fragment_to_register_Fragment);
+        Navigation.findNavController(getView()).navigate(R.id.action_global_navigation_profile);
     }
 }
